@@ -1,4 +1,4 @@
-# CREATIVE VAULT
+# CREATD
 
 > *Your creative archive. Every idea has a home.*
 
