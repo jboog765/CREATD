@@ -1,4 +1,4 @@
-# CREATD
+# CREATD.
 
 > *Your creative archive. Every idea has a home.*
 
@@ -6,7 +6,7 @@ A personal vault app built for creatives who never stop building — and never d
 
 Built by **APG JBOOG** as a solo tool to declutter the creative mind without losing a single idea.
 
-🔗 **Live App:** [jboog765.github.io/Creative-Vault](https://jboog765.github.io/Creative-Vault/)
+🔗 **Live App:** [jboog765.github.io/CREATD](https://jboog765.github.io/CREATD/)
 
 ---
 
