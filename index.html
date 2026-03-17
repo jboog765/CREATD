@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CREATIVE VAULT</title>
+<title>APG VAULT</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
@@ -749,7 +749,8 @@ window.handleAuth = async function() {
       await createUserWithEmailAndPassword(auth, email, pass);
     }
   } catch(e) {
-    errEl.textContent = friendlyError(e.code);
+    console.error('AUTH ERROR:', e.code, e.message);
+    errEl.textContent = e.code + ': ' + e.message;
     btn.disabled = false;
   }
 };
