@@ -61,8 +61,8 @@
   /* ── HOME ── */
   #home { align-items: center; justify-content: center; gap: var(--gap); }
   .user-bar { position: fixed; top: 1rem; right: 1.2rem; display: flex; align-items: center; z-index: 10; animation: fadeIn 0.5s ease 0.8s both; }
-  .logout-btn { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.2); cursor: pointer; transition: color 0.2s; padding: 0.3rem 0.55rem; border: 1px solid var(--dim); border-radius: 5px; }
-  .logout-btn:hover { color: var(--red); border-color: var(--red); }
+  .logout-btn { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); cursor: pointer; transition: opacity 0.2s; padding: 0.3rem 0.55rem; border: 1px solid rgba(91,200,245,0.35); border-radius: 5px; }
+  .logout-btn:hover { opacity: 0.7; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
   .nav-row { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; cursor: pointer; animation: riseIn 0.7s cubic-bezier(0.22,1,0.36,1) both; }
@@ -295,7 +295,7 @@
 <!-- AUTH -->
 <div id="auth-screen" class="screen hidden">
   <div class="auth-box">
-    <div class="auth-logo">CREAT<span>D</span></div>
+    <div class="auth-logo">CREAT<span>D</span><span style="color:var(--blue)">.</span></div>
     <div class="auth-sub">your creative archive</div>
     <div class="auth-tabs">
       <div class="auth-tab active" id="tab-login" onclick="switchTab('login')">Sign In</div>
@@ -303,7 +303,6 @@
     </div>
     <input class="auth-input" id="auth-email" type="email" placeholder="Email address" autocomplete="email"/>
     <input class="auth-input" id="auth-pass" type="password" placeholder="Password" autocomplete="current-password"/>
-    <input class="auth-input hidden" id="auth-pass2" type="password" placeholder="Confirm password" autocomplete="new-password"/>
     <div class="auth-error" id="auth-error"></div>
     <button class="auth-btn" id="auth-submit-btn" onclick="handleAuth()">Sign In</button>
     <div class="auth-divider">or</div>
@@ -562,18 +561,15 @@ window.switchTab = function(mode) {
   document.getElementById('tab-login').classList.toggle('active',mode==='login');
   document.getElementById('tab-signup').classList.toggle('active',mode==='signup');
   document.getElementById('auth-submit-btn').textContent=mode==='login'?'Sign In':'Create Account';
-  document.getElementById('auth-pass2').classList.toggle('hidden',mode==='login');
   document.getElementById('auth-error').textContent='';
 };
 window.handleAuth = async function() {
   const email=document.getElementById('auth-email').value.trim();
   const pass=document.getElementById('auth-pass').value;
-  const pass2=document.getElementById('auth-pass2').value;
   const errEl=document.getElementById('auth-error');
   const btn=document.getElementById('auth-submit-btn');
   errEl.textContent='';
   if (!email||!pass){errEl.textContent='Please fill in all fields.';return;}
-  if (authMode==='signup'&&pass!==pass2){errEl.textContent='Passwords do not match.';return;}
   if (authMode==='signup'&&pass.length<6){errEl.textContent='Password must be at least 6 characters.';return;}
   btn.disabled=true;
   try {
@@ -1076,7 +1072,6 @@ document.getElementById('note-name-input').addEventListener('keydown',e=>{if(e.k
 document.getElementById('actions-rename-input').addEventListener('keydown',e=>{if(e.key==='Enter')window.saveItemActions();});
 document.getElementById('auth-email').addEventListener('keydown',e=>{if(e.key==='Enter')window.handleAuth();});
 document.getElementById('auth-pass').addEventListener('keydown',e=>{if(e.key==='Enter')window.handleAuth();});
-document.getElementById('auth-pass2').addEventListener('keydown',e=>{if(e.key==='Enter')window.handleAuth();});
 updateSortUI();
 </script>
 </body>
